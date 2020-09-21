@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+      <h1>Link Shortener</h1>
+      <form action="/shortLinks" method="POST" class="my-4 form-inline">
+        <label for="fullLink" class="sr-only">Url</label>
+        <input required placeholder="Link" type="link" name="fullLink" id="fullLink" class="form-control col mr-2">
+        <button class="btn btn-dark" type="submit">Shrink</button>
+      </form>
+      
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Full Link</th>
+            <th>Short Link</th>
+            <th>Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% shortLinks.forEach(shortLink => { %>
+            <tr>
+              <td><a href="<%= shortLink.full %>"><%= shortLink.full %></a></td>
+              <td><a href="<%= shortLink.short %>"><%= shortLink.short %></a></td>
+              <td><%= shortLink.clicks %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  </html>
